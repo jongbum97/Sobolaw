@@ -8,9 +8,24 @@ headers.set("Content-Type", "application/json;charset=utf-8");
 const url = "members";
 
 // 멤버 정보 조회
-async function getUserInfo(memberId: number) {
-  const response = await http.get(`${url}/${memberId}`);
+async function getUserInfo(accessToken: string) {
+  const response = await http.get(`${url}`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer" + accessToken,
+    },
+  });
   return response.data.data;
+}
+
+// 로그아웃
+async function postLogout(accessToken: string) {
+  await http.post(`${url}/logout`, {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
+    },
+  });
 }
 
 // 멤버가 저장한 판례 조회
@@ -52,6 +67,7 @@ export {
   getRecentPrecedents,
   getMemberList,
   postMyKeyword,
+  postLogout,
 };
 
 // async function getUserInfo(

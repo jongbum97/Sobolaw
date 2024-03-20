@@ -3,26 +3,36 @@ import { Menu } from "antd";
 import { UserOutlined, FormOutlined, InboxOutlined } from "@ant-design/icons";
 
 interface RightMenuProps {
+  username: string;
   mode: "horizontal";
   selectedSubKeys: string[];
-  setSelectedKeys:React.Dispatch<React.SetStateAction<string[]>>;
-  setSelectedSubKeys:React.Dispatch<React.SetStateAction<string[]>>;
+  setSelectedKeys: React.Dispatch<React.SetStateAction<string[]>>;
+  setSelectedSubKeys: React.Dispatch<React.SetStateAction<string[]>>;
 }
 
-const MypageMenu: React.FC<RightMenuProps> = ({ mode, setSelectedKeys, selectedSubKeys, setSelectedSubKeys }) => {
-  const subClickHandler = ({key}:  { key: string }) => {
-    setSelectedKeys([""])
-    setSelectedSubKeys([key])
-  }
+const MypageMenu: React.FC<RightMenuProps> = ({
+  username,
+  mode,
+  setSelectedKeys,
+  selectedSubKeys,
+  setSelectedSubKeys,
+}) => {
+  const subClickHandler = ({ key }: { key: string }) => {
+    setSelectedKeys([""]);
+    setSelectedSubKeys([key]);
+  };
 
   return (
     <Menu mode={mode} selectedKeys={selectedSubKeys} onSelect={subClickHandler}>
       <Menu.SubMenu
         key="userMenu"
         title={
-          <span className="username" style={{ width: "2rem" }}>
-            이름이름
-          </span>
+          <>
+            <span className="username" style={{ width: "2rem" }}>
+              <p style={{ color: "#BF8438", fontWeight: "bold" }}>{username}</p>
+              <p>님</p>
+            </span>
+          </>
         }
       >
         <Menu.Item key="1" icon={<UserOutlined />}>

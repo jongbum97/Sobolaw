@@ -16,7 +16,6 @@ import MyCase from "./pages/mypage/MyCase";
 import DefamatinoPage from "./pages/lawsuit/defamation";
 import FraudPage from "./pages/lawsuit/fraud";
 import InsultPage from "./pages/lawsuit/insult";
-import KakaoCallback from "./pages/login/KakaoCallback";
 
 function App() {
   return (
@@ -42,7 +41,6 @@ function App() {
       <Route path="/plaint/1" element={<DefamatinoPage />} />
       <Route path="/plaint/2" element={<FraudPage />} />
       <Route path="/plaint/3" element={<InsultPage />} />
-      <Route path="/oauth2/callback/kakao/*" element={<KakaoCallback />} />
       {/* 다른 Route도 추가가능~ */}
     </Routes>
   );
