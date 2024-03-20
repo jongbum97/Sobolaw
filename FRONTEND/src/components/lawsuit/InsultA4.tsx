@@ -47,12 +47,7 @@ export default function LawsuitInsult() {
   const [defendantPhoneNumber, setDefendantPhoneNumber] = useState("");
   // 사건정보
   const [incidentDate, setIncidentDate] = useState("");
-  const [incidentTime, setIncidentTime] = useState({
-    hour: 0,
-    minute: 0,
-    second: 0,
-    nano: 0,
-  });
+  const [incidentTime, setIncidentTime] = useState("");
   const [onlineServiceType, setOnlineServiceType] = useState("");
   const [webServiceDetails, setWebServiceDetails] = useState("");
   const [problemSpeech, setProblemSpeech] = useState("");
@@ -131,13 +126,14 @@ export default function LawsuitInsult() {
       const [datePart, timePart] = dateStr.split(" ");
       // incidentDate 상태 변수에 날짜 부분을 할당합니다.
       setIncidentDate(datePart);
-      // 시간 부분을 콜론을 기준으로 분리하여 각 시간 요소를 구합니다.
+      // // 시간 부분을 콜론을 기준으로 분리하여 각 시간 요소를 구합니다.
       const [hourStr, minuteStr, secondStr] = timePart.split(":");
-      const hour = parseInt(hourStr, 10);
-      const minute = parseInt(minuteStr, 10);
-      const second = parseInt(secondStr, 10);
-      // incidentTime 상태 변수에 시간 요소를 할당합니다.
-      setIncidentTime({ hour, minute, second, nano: 0 });
+      // const hour = parseInt(hourStr, 10);
+      // const minute = parseInt(minuteStr, 10);
+      // const second = parseInt(secondStr, 10);
+      // // incidentTime 상태 변수에 시간 요소를 할당합니다.
+      // setIncidentTime({ hour, minute, second, nano: 0 });
+      setIncidentTime(timePart);
       // 고소장에 파싱될 용도의 날짜/시간도 할당합니다
       // 용도에 맞게 날짜 형식을 변경합니다.
       const modifiedDatePart = datePart.replace(/-/g, ".");

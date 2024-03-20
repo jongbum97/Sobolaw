@@ -1,8 +1,9 @@
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import { AppDispatch, RootState } from "../redux/store/store";
-import { saveAccessToken } from "../redux/reducers/user/userSlice";
+import { AppDispatch, RootState } from "../../redux/store/store";
+import { saveAccessToken } from "../../redux/reducers/user/userSlice";
+import style from "../../styles/common/Login.module.css";
 import backImg from "/images/loginBg.jpg";
 import LoginBtnKaKao from "/images/KAKAO_LOGIN.png";
 import LoginBtnNaver from "/images/NAVER_LOGIN.png";
@@ -32,18 +33,24 @@ function LoginPage() {
   const dispatch: AppDispatch = useDispatch();
   const accessToken = useSelector((state: RootState) => state.user.accessToken);
   const kakaoURL = `https://j10a604.p.ssafy.io/api/user-service/oauth2/authorization/kakao`;
-  const naverURL = `https://j10a604.p.ssafy.io/api/user-service/oauth2/authorization/naver`;
+  const naverURL = `http://70.12.247.27:8001/api/user-service/oauth2/authorization/kakao`;
 
   // 토큰 가져오는 useEffect
   useEffect(() => {
     // 현재 url에서 토큰을 가져와서 저장하자
-    const token = new URL(window.location.href).searchParams.get("accessToken");
+    // const token = new URL(document.location.toString()).searchParams.get(
+    const token = new URL(
+      "https://j10a604.p.ssafy.io/?accessToken=eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiLquYDtmITsp4AiLCJyb2xlIjoiUk9MRV9VU0VSIiwiaWF0IjoxNzEwOTA5OTk5LCJleHAiOjE3MTE1MTQ3OTl9.nY3DRcH6aD0csx6oFrJMKCQDbrnugM6uRUPvOBpBkxRIxP-BpGRn-gwlH_wDLF2NH6mJ0BOvWoZr0oN5XT3fsA"
+    ).searchParams.get("accessToken");
     console.log(token);
+    console.log(window.location.href);
+
     // const token = new URL(window.location.href).searchParams.get("Authorization");
     if (token) {
       // 세션에 accessToken을 저장해주자
       dispatch(saveAccessToken(token));
       console.log(token);
+      console.log(accessToken);
     } else {
       (" 토큰안뜸");
     }
@@ -51,11 +58,15 @@ function LoginPage() {
       // loadUserInfo();
       navigate("/");
     }
-  }, [dispatch, navigate]);
+  }, [navigate]);
 
+  console.log(accessToken);
   const kakaoLogin = function () {
     // 로그인버튼을 누르면 카카오 로그인 창으로 간다
     window.location.href = kakaoURL;
+    const token = new URL(window.location.href).searchParams.get("accessToken");
+    console.log(token);
+    console.log(new URL(window.location.href));
   };
 
   return (
@@ -80,11 +91,13 @@ function LoginPage() {
       </div>
       <img
         src={LoginBtnKaKao}
+        className={style["login-btn-kakao"]}
         onClick={kakaoLogin}
         style={{ cursor: "pointer" }}
       />
       <img
         src={LoginBtnNaver}
+        className={style["login-btn-naver"]}
         onClick={() => (window.location.href = naverURL)}
         style={{ cursor: "pointer" }}
       />
@@ -93,49 +106,3 @@ function LoginPage() {
 }
 
 export default LoginPage;
-
-// 추후 백엔드 연결되면 사용예정
-// import { useEffect } from "react";
-// import axios from "axios"
-
-// const KakaoCallback = () => {
-//     useEffect(() => {
-//         const params= new URL(document.location.toString()).searchParams;
-//         const code = params.get('code');
-//         const grantType = "authorization_code";
-//         const REST_API_KEY = `${process.env.REACT_APP_REST_API_KEY}`;
-//         const REDIRECT_URI = `${process.env.REACT_APP_REDIRECT_URL}`;
-
-//         axios.post(
-//             `https://kauth.kakao.com/oauth/token?grant_type=${grantType}&client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&code=${code}`,
-//             {},
-//             { headers: { "Content-type": "application/x-www-form-urlencoded;charset=utf-8" } }
-//         )
-//         .then((res: any) => {
-//             console.log(res);
-//             const { access_token } = res.data;
-//             axios.post(
-//                 `https://kapi.kakao.com/v2/user/me`,
-//                 {},
-//                 {
-//                     headers: {
-//                         Authorization: `Bearer ${access_token}`,
-//                         "Content-type": "application/x-www-form-urlencoded;charset=utf-8",
-//                     }
-//                 }
-//             )
-//             .then((res: any) => {
-//                 console.log('2번쨰', res);
-//             })
-//         })
-//         .catch((Error: any) => {
-//             console.log(Error)
-//         })
-//     }, [])
-
-//     return(
-//         <>
-//         </>
-//     )
-// }
-// export default KakaoCallback;

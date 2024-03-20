@@ -24,7 +24,7 @@ const userSlice = createSlice({
       state.userId = action.payload.id;
       state.nickname = action.payload.nickname;
     },
-    saveAccessToken: (state, action) => {
+    saveAccessToken(state, action) {
       state.accessToken = action.payload.accessToken;
     },
     // // 로그아웃(초기화 해주기)

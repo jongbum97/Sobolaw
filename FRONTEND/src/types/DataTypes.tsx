@@ -150,12 +150,7 @@ export type InsultForm = {
   defendantAddress: string;
   defendantPhoneNumber: string;
   incidentDate: string;
-  incidentTime: {
-    hour: number;
-    minute: number;
-    second: number;
-    nano: number;
-  };
+  incidentTime: string;
   onlineServiceType: string;
   webServiceDetails: string;
   problemSpeech: string;

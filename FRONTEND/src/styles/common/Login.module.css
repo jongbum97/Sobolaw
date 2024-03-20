@@ -1,0 +1,15 @@
+.login-btn-kakao {
+  margin: 1rem;
+  width: 300px;
+  height: 45px;
+  background-color: rgb(254, 229, 0);
+  border-radius: 4px;
+}
+
+.login-btn-naver {
+  margin: 0 1rem 0 1rem;
+  border-radius: 4px;
+  width: 300px;
+  height: 45px;
+  background-color: rgb(3, 199, 90);
+}

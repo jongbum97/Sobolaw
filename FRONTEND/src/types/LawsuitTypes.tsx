@@ -71,7 +71,7 @@ export const initialInsultContent: InsultForm = {
   defendantAddress: "",
   defendantPhoneNumber: "",
   incidentDate: "",
-  incidentTime: { hour: 0, minute: 0, second: 0, nano: 0 },
+  incidentTime: "",
   onlineServiceType: "",
   webServiceDetails: "",
   problemSpeech: "",
