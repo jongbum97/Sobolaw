@@ -1,7 +1,7 @@
 export type UserState = {
   memberId: number;
   username: string;
-  accessToken: string;
+  aToken: string;
   refreshToken: string;
 };
 

@@ -12,7 +12,7 @@ import LoginBtnNaver from "/images/NAVER_LOGIN.png";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const accessToken = useSelector((state: RootState) => state.user.accessToken);
+  const accessToken = useSelector((state: RootState) => state.user.aToken);
   const refreshToken = useSelector(
     (state: RootState) => state.user.refreshToken
   );
@@ -22,10 +22,10 @@ function LoginPage() {
   useEffect(() => {
     const aT = new URL(window.location.href).searchParams.get("accessToken");
     const rT = new URL(window.location.href).searchParams.get("refreshToken");
-
+    console.log(aT);
     if (aT) {
       // 세션에 accessToken을 저장해주자
-      dispatch(saveToken({ accessToken: aT, refreshToken: rT }));
+      dispatch(saveToken({ aToken: aT, refreshToken: rT }));
       console.log(aT);
       console.log(accessToken);
       console.log(refreshToken);

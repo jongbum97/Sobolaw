@@ -4,7 +4,7 @@ import { UserState } from "../../../types/DataTypes";
 const initialState: UserState = {
   memberId: 0,
   username: "",
-  accessToken: "",
+  aToken: "",
   refreshToken: "",
 };
 
@@ -17,7 +17,7 @@ const userSlice = createSlice({
   reducers: {
     // 초기화 함수
     resetAuth: (state) => {
-      state.accessToken = "";
+      state.aToken = "";
       state.refreshToken = "";
       state.memberId = 0;
       state.username = "";
@@ -29,7 +29,8 @@ const userSlice = createSlice({
     },
     // 받아온 토큰값을 저장하는 함수
     saveToken(state, action) {
-      state.accessToken = action.payload.accessToken;
+      console.log(action);
+      state.aToken = action.payload.aToken;
       state.refreshToken = action.payload.refreshToken;
     },
   },
