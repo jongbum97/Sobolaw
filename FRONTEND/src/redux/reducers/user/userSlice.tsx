@@ -15,22 +15,35 @@ const userSlice = createSlice({
 
   // 액션 리듀서(함수)
   reducers: {
-    // 초기화 함수
-    resetAuth: (state) => {
-      state.accessToken = "";
-      state.refreshToken = "";
-      state.memberId = 0;
-      state.username = "";
-    },
     // 처음 user의 정보를 저장하는 함수
     saveUserInfo(state, action) {
       state.memberId = action.payload.memberId;
       state.username = action.payload.username;
     },
-    // 받아온 토큰값을 저장하는 함수
-    saveToken(state, action) {
-      state.accessToken = action.payload.accessToken;
-      state.refreshToken = action.payload.refreshToken;
+    // saveAccessToken: (state, action) => {
+    //   return {
+    //     ...state,
+    //     accessToken: action.payload,
+    //   };
+    // },
+    // saveRefreshToken: (state, action) => {
+    //   return {
+    //     ...state,
+    //     refreshToken: action.payload,
+    //   };
+    // },
+    saveAccessToken: (state, action) => {
+      state.accessToken = action.payload;
+    },
+    saveRefreshToken: (state, action) => {
+      state.refreshToken = action.payload;
+    },
+
+    // 초기화 함수
+    resetAuth: () => {
+      return {
+        ...initialState,
+      };
     },
   },
 
@@ -53,5 +66,6 @@ const userSlice = createSlice({
   ///////////////////////////////////////////////////////
 });
 
-export const { saveUserInfo, resetAuth, saveToken } = userSlice.actions;
+export const { saveUserInfo, resetAuth, saveAccessToken, saveRefreshToken } =
+  userSlice.actions;
 export default userSlice.reducer;

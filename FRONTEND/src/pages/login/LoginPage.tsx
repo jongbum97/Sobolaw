@@ -2,7 +2,11 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { AppDispatch, RootState } from "../../redux/store/store";
-import { saveToken, saveUserInfo } from "../../redux/reducers/user/userSlice";
+import {
+  saveAccessToken,
+  saveRefreshToken,
+  saveUserInfo,
+} from "../../redux/reducers/user/userSlice";
 import { getUserInfo } from "../../api/members";
 import style from "../../styles/common/Login.module.css";
 import backImg from "/images/loginBg.jpg";
@@ -12,8 +16,10 @@ import LoginBtnNaver from "/images/NAVER_LOGIN.png";
 function LoginPage() {
   const navigate = useNavigate();
   const dispatch: AppDispatch = useDispatch();
-  const accessToken = useSelector((state: RootState) => state.user.accessToken);
-  const refreshToken = useSelector(
+  const accessToken: string = useSelector(
+    (state: RootState) => state.user.accessToken
+  );
+  const refreshToken: string = useSelector(
     (state: RootState) => state.user.refreshToken
   );
   const tokenURL =
@@ -23,18 +29,15 @@ function LoginPage() {
     const aT = new URL(window.location.href).searchParams.get("accessToken");
     const rT = new URL(window.location.href).searchParams.get("refreshToken");
 
-    if (aT) {
-      // 세션에 accessToken을 저장해주자
-      dispatch(saveToken({ accessToken: aT, refreshToken: rT }));
-      console.log(aT);
-      console.log(accessToken);
-      console.log(refreshToken);
+    if (aT && rT) {
+      console.log("AT:" + aT, "RT: " + rT);
+      dispatch(saveAccessToken(aT));
+      dispatch(saveRefreshToken(rT));
     }
     if (accessToken && refreshToken) {
       // 세션에 memberId와 name을 저장하기 위해 API 호출
       getUserInfo(accessToken)
         .then((res) => {
-          console.log(res);
           dispatch(
             saveUserInfo({ memberId: res.memberId, username: res.name })
           );
@@ -53,7 +56,7 @@ function LoginPage() {
   const naverLogin = function () {
     window.location.href = `${tokenURL}/naver`;
   };
-
+  console.log(accessToken);
   return (
     <div
       style={{

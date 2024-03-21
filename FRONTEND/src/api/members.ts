@@ -11,8 +11,8 @@ const url = "members";
 async function getUserInfo(accessToken: string) {
   const response = await http.get(`${url}`, {
     headers: {
-      "Content-Type": "application/json",
-      Authorization: "Bearer" + accessToken,
+      // "Content-Type": "application/json",
+      Authorization: "Bearer " + accessToken,
     },
   });
   return response.data.data;

@@ -1,6 +1,7 @@
+import { combineReducers } from "redux";
 import { configureStore } from "@reduxjs/toolkit";
 import userReducer from "../reducers/user/userSlice";
-import sessionStorage from "redux-persist/lib/storage/session";
+import sessionStorage from "redux-persist/lib/storage";
 import {
   persistReducer,
   persistStore,
@@ -12,6 +13,10 @@ import {
   REGISTER,
 } from "redux-persist";
 
+const reducers = combineReducers({
+  user: userReducer,
+});
+
 // 세션 스토리지에 redux 저장하기 위한 설정, blacklist에는 저장하지 않을 reducer, whitelist에는 저장할 reducer를 넣는다.
 const persistConfig = {
   key: "root",
@@ -21,9 +26,7 @@ const persistConfig = {
 
 // redux store 생성
 const store = configureStore({
-  reducer: {
-    user: persistReducer(persistConfig, userReducer),
-  },
+  reducer: persistReducer(persistConfig, reducers),
   middleware: (getDefaultMiddleware) =>
     getDefaultMiddleware({
       serializableCheck: {
