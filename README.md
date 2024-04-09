@@ -273,17 +273,17 @@
 
 <table>
     <tr>
-        <td height="140px" align="center"> <a href="https://github.com/gogoadl">
-            <img src="./upload/image/ㄱㅈㅂ.jpg" /> <br><br> 👑 김종범 <br>(Back-End) </a> <br></td>
         <td height="140px" align="center"> <a href="https://github.com/jongbum97">
+            <img src="./upload/image/ㄱㅈㅂ.jpg" /> <br><br> 👑 김종범 <br>(Back-End) </a> <br></td>
+        <td height="140px" align="center"> <a href="https://github.com/so2043">
             <img src="./upload/image/ㅈㅅㅇ.jpeg" /> <br><br> 정소영 <br>(Back-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/hrlee12">
+        <td height="140px" align="center"> <a href="https://github.com/jaesung08">
             <img src="./upload/image/ㅈㅈㅅ.jpeg" /> <br><br> 장재성 <br>(Back-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/eun-byeol">
+        <td height="140px" align="center"> <a href="https://github.com/choikeunyoung">
             <img src="./upload/image/ㅊㄱㅇ.jpg" /> <br><br> 최근영 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/jshEIT">
+        <td height="140px" align="center"> <a href="https://github.com/printilikepenguin">
             <img src="./upload/image/ㄱㅎㅈ.jpg" /> <br><br> 김현지 <br>(Front-End) </a> <br></td>
-        <td height="140px" align="center"> <a href="https://github.com/com2s">
+        <td height="140px" align="center"> <a href="https://github.com/Cho-yool">
             <img src="./upload/image/ㅈㅅㅎ.jpg" /> <br><br> 조성호 <br>(Front-End) </a> <br></td>
     </tr>
     <tr>
