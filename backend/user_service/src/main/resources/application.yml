@@ -26,8 +26,8 @@ spring:
       client:
         registration:
           kakao:
-            client-id: ef322d7307420955f2517d792e85a41b
-            client-secret: Rmct0Pj9dNMDgjGwt9gDuu1KSOaq8fUu
+            client-id: 
+            client-secret: 
             redirect-uri: "https://j10a604.p.ssafy.io/api/user-service/oauth2/callback/kakao"
             authorization-grant-type: authorization_code
             client-authentication-method: client_secret_post
@@ -35,8 +35,8 @@ spring:
               - profile_nickname
               - account_email
           naver:
-            client-id: zrnSAK6f3mzqWn2Nos_o
-            client-secret: HdH2s7s9ci
+            client-id: 
+            client-secret: 
             redirect-uri: "https://j10a604.p.ssafy.io/api/user-service/oauth2/callback/naver"
             authorization-grant-type: authorization_code
             scope: email
@@ -75,8 +75,8 @@ spring:
     host: smtp.naver.com
     port: 465
     # 본인 naver 계정정보 삽입
-    username: lancer98@naver.com
-    password: wkdwotjd98!@
+    username: 
+    password: 
     # 전송하기 위한 prop으로 ssl의 신뢰, 권한 등 사용허가
     properties:
       mail.transport.protocol: stmp
@@ -132,8 +132,8 @@ cloud:
     s3:
       bucket: sobolaw
     credentials:
-      access-key: AKIA5NYAE3TGCHYHG4VY
-      secret-key: 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
+      access-key: 
+      secret-key: 
     region:
       static: ap-northeast-2
       auto: false
